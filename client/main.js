@@ -72,9 +72,8 @@ const handleSubmit = async (e) => {
 	chatContainer.scrollTop = chatContainer.scrollHeight;
 
 	const messageDiv = document.getElementById(uniqueId);
-
 	loader(messageDiv);
-	const response = await fetch("https://codeai-uh8b.onrender.com", {
+	const response = await fetch("http://localhost:5000", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

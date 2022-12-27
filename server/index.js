@@ -16,13 +16,15 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", async (req, res) => {
-	res.sendStatus(200);
+	res.status(200).send({
+		message: "Hello from ChatGPT",
+	});
 });
 
 app.post("/", async (req, res) => {
 	try {
 		const prompt = req.body.prompt;
-
+        console.log(prompt);
 		const response = await openai.createCompletion({
 			model: "text-davinci-003",
 			prompt: `${prompt}`,
@@ -43,6 +45,6 @@ app.post("/", async (req, res) => {
 	}
 });
 
-app.listen(5000 | process.env.PORT, () =>
+app.listen(5000 || process.env.PORT, () =>
 	console.log("AI server started on http://localhost:5000")
 );
